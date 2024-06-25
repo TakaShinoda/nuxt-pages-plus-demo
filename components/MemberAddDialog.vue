@@ -4,6 +4,7 @@ import { CheckIcon } from '@heroicons/vue/24/outline'
 
 const open = defineModel({ type: Boolean })
 </script>
+
 <template>
   <TransitionRoot as="template" :show="open">
     <Dialog class="relative z-10" @close="open = false">
