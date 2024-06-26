@@ -2,9 +2,6 @@
 import { ref } from 'vue'
 
 const open = ref(false)
-const handleClick = () => {
-  open.value = true
-}
 </script>
 
 <template>
@@ -18,7 +15,8 @@ const handleClick = () => {
           <dt class="font-medium text-gray-900 sm:w-64 sm:flex-none sm:pr-6">メンバー追加</dt>
           <dd class="mt-1 flex justify-between gap-x-6 sm:mt-0 sm:flex-auto">
             <div class="text-gray-900">チームメンバーを追加します</div>
-            <button @click="handleClick" type="button" class="font-semibold text-sky-600 hover:text-sky-500">Add</button>
+            <PlusModalLink to="/team/add" class="font-semibold text-sky-600 hover:text-sky-500">Add</PlusModalLink>
+            <PlusModalPage name="dialog" />
           </dd>
         </div>
         <div class="pt-6 sm:flex">
