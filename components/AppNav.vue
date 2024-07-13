@@ -7,10 +7,10 @@ import {
 } from '@heroicons/vue/24/outline'
 
 const secondaryNavigation = [
-  { name: 'General', href: '#', icon: UserCircleIcon, current: false },
-  { name: 'Security', href: '#', icon: FingerPrintIcon, current: false },
-  { name: 'Notifications', href: '#', icon: BellIcon, current: false },
-  { name: 'Team', href: '#', icon: UsersIcon, current: true },
+  { name: 'General', to: '/', icon: UserCircleIcon, path: '' },
+  { name: 'Security', to: '/security', icon: FingerPrintIcon, path: 'security' },
+  { name: 'Notifications', to: '/notifications', icon: BellIcon, path: 'notifications' },
+  { name: 'Team', to: '/team', icon: UsersIcon, current: true, path: 'team' }
 ] as const
 </script>
 
@@ -19,10 +19,10 @@ const secondaryNavigation = [
     <nav class="flex-none px-4 sm:px-6 lg:px-0">
       <ul role="list" class="flex gap-x-3 gap-y-1 whitespace-nowrap lg:flex-col">
         <li v-for="item in secondaryNavigation" :key="item.name">
-          <a :href="item.href" :class="[item.current ? 'bg-gray-50 text-sky-600' : 'text-gray-700 hover:bg-gray-50 hover:text-sky-600', 'group flex gap-x-3 rounded-md py-2 pl-2 pr-3 text-sm font-semibold leading-6']">
-            <component :is="item.icon" :class="[item.current ? 'text-sky-600' : 'text-gray-400 group-hover:text-sky-600', 'h-6 w-6 shrink-0']" aria-hidden="true" />
+          <NuxtLink :to="item.to" :class="[$route.path.split('/')[1] === item.path ? 'bg-gray-50 text-sky-600' : 'text-gray-700 hover:bg-gray-50 hover:text-sky-600', 'group flex gap-x-3 rounded-md py-2 pl-2 pr-3 text-sm font-semibold leading-6']">
+            <component :is="item.icon" :class="[$route.path.split('/')[1] === item.path ? 'text-sky-600' : 'text-gray-400 group-hover:text-sky-600', 'h-6 w-6 shrink-0']" aria-hidden="true" />
             {{ item.name }}
-          </a>
+          </NuxtLink>
         </li>
       </ul>
     </nav>
